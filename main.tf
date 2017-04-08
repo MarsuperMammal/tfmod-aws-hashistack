@@ -47,7 +47,7 @@ resource "aws_route53_record" "nomadr53" {
 }
 
 resource "aws_alb" "alb" {
-  name_prefix = "hashistack"
+  name_prefix = "hashi"
   internal = false
   security_groups = ["${var.nomad_sgs}","${var.consul_sgs}","${var.vault_sgs}"]
   subnets = ["${var.pub_subnets}"]
