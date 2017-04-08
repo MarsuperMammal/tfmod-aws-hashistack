@@ -50,7 +50,7 @@ resource "aws_alb" "alb" {
   name_prefix = "hashistack"
   internal = false
   security_groups = ["${var.nomad_sgs}","${var.consul_sgs}","${var.vault_sgs}"]
-  subnets = ["${var.pub_subnets}}"]
+  subnets = ["${var.pub_subnets}"]
 }
 
 resource "aws_alb_target_group" "vaulttg" {
