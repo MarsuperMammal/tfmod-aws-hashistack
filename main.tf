@@ -180,6 +180,7 @@ resource "aws_autoscaling_group" "vaultasg" {
     value = "${var.consul_server_join_tag_value}"
     propagate_at_launch = true
   }
+  depends_on = ["aws_autoscaling_group.consulasg"]
 }
 
 resource "aws_launch_configuration" "nomadlc" {
@@ -222,6 +223,7 @@ resource "aws_autoscaling_group" "nomadasg" {
     value = "${var.consul_server_join_tag_value}"
     propagate_at_launch = true
   }
+  depends_on = ["aws_autoscaling_group.consulasg"]
 }
 
 resource "aws_launch_configuration" "consullc" {
