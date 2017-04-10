@@ -18,7 +18,7 @@ resource "aws_route53_record" "vaultr53" {
   alias {
     name = "${aws_alb.alb.dns_name}"
     zone_id = "${aws_alb.alb.zone_id}"
-    evaluate_target_health = true
+    evaluate_target_health = false
   }
 }
 
@@ -30,7 +30,7 @@ resource "aws_route53_record" "consulr53" {
   alias {
     name = "${aws_alb.alb.dns_name}"
     zone_id = "${aws_alb.alb.zone_id}"
-    evaluate_target_health = true
+    evaluate_target_health = false
   }
 }
 
@@ -42,7 +42,7 @@ resource "aws_route53_record" "nomadr53" {
   alias {
     name = "${aws_alb.alb.dns_name}"
     zone_id = "${aws_alb.alb.zone_id}"
-    evaluate_target_health = true
+    evaluate_target_health = false
   }
 }
 
