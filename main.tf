@@ -267,3 +267,28 @@ resource "aws_autoscaling_group" "consulasg" {
     propagate_at_launch = true
   }
 }
+
+resource "aws_instance" "nomad-client" {
+  count = "${var.nomad_client_count}"
+  ami_id = "${var.ami_id}"
+  instance_type = "${var.nomad_client_instance_type}"
+  key_name = "${var.key_name}"
+  vpc_security_group_ids = ["${var.nomad_sgs}"]
+  iam_instance_profile = "${var.nomad_iam_instance_profile}"
+  subnet_id = "${var.priv_subnets[count.index]}"
+  user_data = "${var.nomad_client_userdata}"
+  root_block_device {
+    volume_size = 30
+    delete_on_termination = true
+  }
+  tag {
+    key = "Name"
+    value = "nomad-client"
+    propagate_at_launch = true
+  }
+  tag {
+    key = "${var.consul_server_join_tag_key}"
+    value = "${var.consul_server_join_tag_value}"
+    propagate_at_launch = true
+  }
+}

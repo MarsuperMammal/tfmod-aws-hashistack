@@ -74,7 +74,6 @@ variable "vault_endpoint_url" {}
 variable "consul_endpoint_url" {}
 variable "nomad_endpoint_url" {}
 variable "r53_zone_id" {}
-
-output "vaultasg" { value = "${aws_autoscaling_group.vaultasg.id}" }
-output "consulasg" { value = "${aws_autoscaling_group.consulasg.id}" }
-output "nomadasg" { value = "${aws_autoscaling_group.nomadasg.id}" }
+variable "nomad_client_count" {}
+variable "nomad_client_instance_type" {}
+variable "nomad_client_userdata" {}
